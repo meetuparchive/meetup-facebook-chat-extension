@@ -4,10 +4,12 @@
   "private": true,
   "dependencies": {
     "bootstrap": "4.0.0-alpha.6",
+    "js-cookie": "^2.1.4",
+    "query-string": "^4.3.4",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "serve": "^5.1.4",
-    "react-scripts": "0.9.5"
+    "react-scripts": "0.9.5",
+    "serve": "^5.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
