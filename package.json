@@ -3,12 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "bootstrap": "4.0.0-alpha.6",
+    "body-parser": "^1.17.1",
     "js-cookie": "^2.1.4",
+    "express": "^4.15.2",
+    "path": "^0.12.7",
     "query-string": "^4.3.4",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-scripts": "0.9.5",
+    "request": "^2.81.0",
     "serve": "^5.1.4"
   },
   "scripts": {
@@ -16,6 +19,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "serve": "serve -s build"
+    "serve": "serve -s build",
+    "bot": "node bot.js"
   }
 }
