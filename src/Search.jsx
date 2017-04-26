@@ -63,16 +63,15 @@ export default class Search extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <div className="form-group">
-          <input
-            id="meetup"
-            name='meetup'
-            placeholder="Search for Meetups"
-            className="form-control"
-            type="text"
-            value={this.state.meetup}
-            onChange={this.handleInputChange} />
-        </div>
+        <input
+          id="meetup"
+          name='meetup'
+          placeholder="Search for Meetups"
+          className="form-control"
+          type="text"
+          value={this.state.meetup}
+          onChange={this.handleInputChange} />
+        <input type="submit" style={{visibility: 'hidden', position: 'absolute'}} />
       </form>
     );
   }

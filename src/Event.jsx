@@ -6,11 +6,11 @@ const Event = ({ event }) => (
     <div className="card" style={{ minHeight: '0' }}>
       <div className='row chunk'>
         <div className='row-item'>
-          <h3 className="list-group-item-heading">{event.name}</h3>
-          <h4 className='list-group-item-text'>{event.group.name}</h4>
+          <h3>{event.name}</h3>
+          <h4>{event.group.name}</h4>
           <small>{ moment(event.time).format('LLLL') }</small>
         </div>
-        <div className='valign--middle row-item--shrink'>
+        <div className='valign--middle row-item row-item--shrink'>
           share button
         </div>
       </div>
