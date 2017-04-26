@@ -1,1 +1,1 @@
-web: yarn run build && node_modules/.bin/serve -s -p $PORT build
+web: yarn run build && yarn run serve
