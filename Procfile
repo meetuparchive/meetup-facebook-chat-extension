@@ -1,1 +1,1 @@
-web: yarn install --pure-lockfile && yarn run build && yarn run serve
+web: yarn run build && yarn run serve
