@@ -8,9 +8,9 @@
     "path": "^0.12.7",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-scripts": "0.9.5",
     "request": "^2.81.0",
-    "serve": "^5.1.4",
-    "react-scripts": "0.9.5"
+    "serve": "^5.1.4"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -973,6 +973,10 @@ boom@2.x.x:
   dependencies:
     hoek "2.x.x"
 
+boostrap@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/boostrap/-/boostrap-1.0.0.tgz#edf224822c4b96fb021ca0f2fd93bac570a35130"
+
 boxen@1.0.0, boxen@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/boxen/-/boxen-1.0.0.tgz#b2694baf1f605f708ff0177c12193b22f29aaaab"
