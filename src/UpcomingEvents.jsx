@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import fetchJsonp from 'fetch-jsonp';
+import cx from 'classnames';
 import queryString from 'query-string';
 import moment from 'moment';
 import { EVENT_DATA, CATEGORIES_DATA } from './data';
@@ -146,12 +147,14 @@ export default class UpcomingEvents extends Component {
     super(props);
     this.fetchUpcomingEvents = this.fetchUpcomingEvents.bind(this);
     this.handleFetchEventsSuccess = this.handleFetchEventsSuccess.bind(this);
+    this.handleFilterClick = this.handleFilterClick.bind(this);
+    this.handleLocationClick = this.handleLocationClick.bind(this);
     this.onShareEvent = this.onShareEvent.bind(this);
 
-    this.state = { events: [] };
+    this.state = { events: [], selectedFilter: '', filterLocation: false };
   }
 
-  fetchUpcomingEvents = (coords) => {
+  fetchUpcomingEvents = (coords = {}, categoryId) => {
     const ENDPOINT = 'https://api.dev.meetup.com/find/upcoming_events';
     const params = queryString.stringify({
       key: process.env.REACT_APP_MEETUP_API_TOKEN,
@@ -160,6 +163,7 @@ export default class UpcomingEvents extends Component {
       ordering: 'time',
       lat: coords.latitude,
       lon: coords.longitude,
+      topic_category: categoryId,
     });
 
     return fetchJsonp(`${ENDPOINT}?${params}`, {
@@ -193,18 +197,43 @@ export default class UpcomingEvents extends Component {
   componentWillMount() {
     // this.handleFetchEventsSuccess(EVENT_DATA);
     // Uncomment for live data
-    this.fetchUpcomingEvents({})
+    this.fetchUpcomingEvents()
+      .then(response => response.json())
+      .then(({ data }) =>
+        this.handleFetchEventsSuccess(data)
+      );
+
+      navigator.geolocation.getCurrentPosition(function(position) {
+        console.log(position.coords);
+        // do_something(position.coords.latitude, position.coords.longitude);
+      });
+  }
+
+  handleFilterClick(categoryId) {
+    this.setState({ selectedFilter: categoryId });
+    this.fetchUpcomingEvents({}, categoryId)
       .then(response => response.json())
       .then(({ data }) =>
         this.handleFetchEventsSuccess(data)
       );
   }
 
+  handleLocationClick(e) {
+    // console.log(this.state.filterLocation);
+    this.setState({ filterLocation: !this.state.filterLocation });
+    navigator.geolocation.getCurrentPosition(position => {
+      this.fetchUpcomingEvents(position.coords, this.state.selectedFilter)
+        .then(response => response.json())
+        .then(({ data }) =>
+          this.handleFetchEventsSuccess(data)
+        );
+    });
+  }
+
   render() {
-    const { events } = this.state;
+    const { events, selectedFilter, filterLocation } = this.state;
 
     if (events.length === 0) { return false; }
-
 
     return (
       <div>
@@ -222,9 +251,20 @@ export default class UpcomingEvents extends Component {
           <div className='bounds'>
             <h1>Filters</h1>
             <div>
-              <button style={styles.filter}>Near Me</button>
-              {CATEGORIES_DATA.map((category, key) =>
-                <button style={styles.filter} key={key}>{category.name}</button>
+              <button
+                className={cx('button-filter', { 'button-filterSelected': filterLocation })}
+                onClick={this.handleLocationClick}
+              >
+                Near Me
+              </button>
+              {CATEGORIES_DATA.map(category =>
+                <button
+                  className={cx('button-filter', { 'button-filterSelected': Boolean(category.id === selectedFilter)})}
+                  onClick={() => this.handleFilterClick(category.id)}
+                  key={category.id}
+                >
+                    {category.name}
+                </button>
               )}
             </div>
           </div>
