@@ -1,0 +1,20 @@
+.half-chunk {
+  margin-bottom: 8px;
+}
+
+.button-override {
+  background-color: #FF4C6B;
+  border-color: #FF4C6B;
+}
+
+.headline {
+  font-size: 26px;
+  line-height: 1.1;
+  color: #212121;
+  max-height: 56px;
+  overflow: hidden;
+}
+
+.secondary {
+  color: #707070;
+}

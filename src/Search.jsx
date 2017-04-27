@@ -3,7 +3,6 @@ import queryString from 'query-string';
 import fetchJsonp from 'fetch-jsonp';
 
 import search from './img/search.svg';
-import { button as buttonStyle } from './style.js'
 
 export default class Search extends Component {
 
@@ -49,7 +48,9 @@ export default class Search extends Component {
         'group',
         'link',
         'time',
-        'yes_rsvp_count'
+        'yes_rsvp_count',
+        'venue',
+        'rsvp_sample'
       ].join(','),
       access_token: token,
       text: meetup,
@@ -57,7 +58,8 @@ export default class Search extends Component {
       lon: coords.longitude,
       fields: [
         'group_key_photo',
-        'group_photo_gradient'
+        'group_photo_gradient',
+        'rsvp_sample'
       ].join(',')
     });
 
@@ -82,7 +84,7 @@ export default class Search extends Component {
               onChange={this.handleInputChange} />
           </div>
           <div className='row-item row-item--shrink'>
-            <button style={buttonStyle} type='submit' className='button button--primary'>
+            <button type='submit' className='button button--primary button-override'>
               <img src={search} width={20} alt='search' />
             </button>
           </div>
