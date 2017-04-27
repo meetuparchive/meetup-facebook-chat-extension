@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 
-import Share from './Share';
+import ShareButton from './Share';
 
 const Event = ({ event }) => (
   <li className='gridList-item'>
@@ -13,7 +13,7 @@ const Event = ({ event }) => (
           <small>{ moment(event.time).format('LLLL') }</small>
         </div>
         <div className='valign--middle row-item row-item--shrink'>
-          <Share />
+          <ShareButton event={event} />
         </div>
       </div>
     </div>

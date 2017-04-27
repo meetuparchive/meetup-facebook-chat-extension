@@ -1,42 +1,46 @@
 import React, { Component } from 'react';
-
-const doShare = () => {
-  var messageToShare = {
-    attachment: {
-      type: 'template',
-      payload: {
-        template_type: 'generic',
-        elements: [{
-          title: 'I took Peters "Which Hat Are You?" Quiz',
-          image_url: 'https://bot.peters-hats.com/img/hats/fez.jpg',
-          subtitle: 'My result: Fez',
-          default_action: {
-            type: 'web_url',
-            url: 'https://bot.peters-hats.com/view_quiz_results.php?user=24601'
-          },
-          buttons: [{
-             type :'web_url',
-             url :'https://bot.peters-hats.com/hatquiz.php?referer=24601',
-             title :'Take the Quiz'
-          }]
-        }]
-      }
-    }
-  };
-
-  MessengerExtensions.beginShareFlow(function success(response) { // eslint-disable-line no-undef
-    console.log(response);
-  }, function error(errorCode, errorMessage) {
-    console.log(errorCode, errorMessage);
-  },
-  messageToShare,
-  'current_thread');
-}
+import moment from 'moment';
 
 export default class Share extends Component {
 
-  handleClick() {
-    doShare();
+  handleClick = () => {
+    const { event } = this.props;
+    const messageToShare = {
+      attachment: {
+        type: 'template',
+        payload: {
+          template_type: 'generic',
+          elements: [{
+            title: event.name,
+            image_url: 'https://bot.peters-hats.com/img/hats/fez.jpg',
+            subtitle: moment(event.time).format('LLLL'),
+            default_action: {
+              type: 'web_url',
+              url: event.link
+            },
+            buttons: [{
+               type :'web_url',
+               url : event.link,
+               title : 'I want to go!'
+            }]
+          }]
+        }
+      }
+    };
+
+    MessengerExtensions.beginShareFlow(function success(response) { // eslint-disable-line no-undef
+      if(response.is_sent === true){
+        // User shared. We're done here!
+        MessengerExtensions.requestCloseBrowser(); // eslint-disable-line no-undef
+      }
+      else{
+        // User canceled their share!
+      }
+    }, function error(errorCode, errorMessage) {
+      console.log(errorCode, errorMessage);
+    },
+    messageToShare,
+    'current_thread');
   }
 
   render() {
