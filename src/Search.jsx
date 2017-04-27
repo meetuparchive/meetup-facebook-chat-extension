@@ -52,7 +52,10 @@ export default class Search extends Component {
       text: meetup,
       lat: coords.latitude,
       lon: coords.longitude,
-      fields: 'group_key_photo'
+      fields: [
+        'group_key_photo',
+        'group_photo_gradient'
+      ].join(',')
     });
 
     return fetchJsonp(`${ENDPOINT}?${params}`, {

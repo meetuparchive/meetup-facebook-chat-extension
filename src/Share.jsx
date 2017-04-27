@@ -2,6 +2,19 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import shareIcon from './img/ic_send_lg_blue@2x.png';
 
+function generateDuotone(keyPhoto, photoGradient) {
+  if (!keyPhoto) {
+    return `${window.location.protocol}//${window.location.hostname}/fallback_blue.png`;
+   }
+
+  var duotone = 'dt' + photoGradient.dark_color + 'x' + photoGradient.light_color;
+  var spec = 'event/rx500x600/' + duotone + '/';
+  var base = 'https://a248.e.akamai.net/secure.meetupstatic.com/photo_api/';
+  var duotoneUrl = base + spec + keyPhoto.id + '.jpeg';
+
+  return duotoneUrl;
+}
+
 export default class Share extends Component {
 
   static defaultProps = {
@@ -10,6 +23,7 @@ export default class Share extends Component {
 
   handleClick = () => {
     const { event } = this.props;
+
     const messageToShare = {
       attachment: {
         type: 'template',
@@ -17,7 +31,7 @@ export default class Share extends Component {
           template_type: 'generic',
           elements: [{
             title: event.name,
-            image_url: ((event.group || {}).key_photo || {}).photo_link,
+            image_url: generateDuotone(event.group.key_photo, event.group.photoGradient),
             subtitle: moment(event.time).format('LLLL'),
             default_action: {
               type: 'web_url',
