@@ -69,7 +69,11 @@ const styles = {
 };
 
 const generateDuotone = (keyPhoto, photoGradient) => {
-  if (!keyPhoto) { return; }
+  if (!keyPhoto) {
+    return `${window.location.protocol}//${window.location.hostname}/fallback_blue.png`;
+  } else if(!photoGradient) {
+    return keyPhoto.photo_link;
+  }
 
   var duotone = 'dt' + photoGradient.dark_color + 'x' + photoGradient.light_color;
   var spec = 'event/rx500x600/' + duotone + '/';
@@ -98,11 +102,38 @@ const EventCard = ({ event, onShare }) => {
   );
 }
 
+const getMessagePayload = (event) => {
+  return ({
+    attachment: {
+      type: 'template',
+      payload: {
+        template_type: 'generic',
+        elements: [{
+          title: event.name,
+          image_url: generateDuotone(event.group.key_photo, event.group.photo_gradient),
+          subtitle: moment(event.time).format('LLLL'),
+          default_action: {
+            type: 'web_url',
+            url: event.link
+          },
+          buttons: [{
+             type :'web_url',
+             //  https://beta2.meetup.com/:urlname/events/:eventId/rsvp?response={no, yes}
+             url : `${event.link.replace('www.', 'beta2.')}rsvp?response=yes`,
+             title : 'I want to go!'
+          }]
+        }]
+      }
+    }
+  });
+};
+
 export default class UpcomingEvents extends Component {
   constructor(props) {
     super(props);
     this.fetchUpcomingEvents = this.fetchUpcomingEvents.bind(this);
     this.handleFetchEventsSuccess = this.handleFetchEventsSuccess.bind(this);
+    this.onShareEvent = this.onShareEvent.bind(this);
 
     this.state = { events: [] };
   }
@@ -122,6 +153,24 @@ export default class UpcomingEvents extends Component {
       method: 'GET',
       credentials: 'include'
     });
+  }
+
+  onShareEvent(event) {
+    const payload = getMessagePayload(event);
+
+    MessengerExtensions.beginShareFlow(function success(response) { // eslint-disable-line no-undef
+      if(response.is_sent === true){
+        // User shared. We're done here!
+        MessengerExtensions.requestCloseBrowser(); // eslint-disable-line no-undef
+      }
+      else{
+        // User canceled their share!
+      }
+    }, function error(errorCode, errorMessage) {
+      console.log(errorCode, errorMessage);
+    },
+    payload,
+    'current_thread');
   }
 
   handleFetchEventsSuccess(data) {
@@ -145,7 +194,7 @@ export default class UpcomingEvents extends Component {
         {events.length > 0 &&
           <Hscroll unclipAt='medium'>
             {events.map((event,key) => (
-              <EventCard key={key} event={event} />
+              <EventCard key={key} event={event} onShare={() => this.onShareEvent(event)}/>
             ))}
           </Hscroll>
         }
