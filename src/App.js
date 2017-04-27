@@ -26,7 +26,7 @@ class App extends Component {
 
   render() {
     const token = getToken();
-    console.log(this.state);
+
     return (
       <div>
         <section className='stripe'>
@@ -35,7 +35,8 @@ class App extends Component {
               <Search
                 token={token}
                 handleSearchSuccess={this.handleSearchSuccess} /> :
-              <Login /> }
+              <Login />
+            }
           </div>
         </section>
         { this.state.events &&
