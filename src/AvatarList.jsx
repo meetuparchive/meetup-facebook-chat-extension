@@ -7,7 +7,7 @@ const AvatarList = ({ members, totalRsvps }) => (
     <li className='avatar-overlap' key={i}><Avatar style={{zIndex: 100-i}} member={member} /></li>
   ))}
   { totalRsvps &&
-    <li className='secondary'>{totalRsvps}</li>
+    <li className='secondary smaller'>{totalRsvps}</li>
   }</ul>
 );
 
