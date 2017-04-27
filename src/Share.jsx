@@ -41,7 +41,8 @@ export default class Share extends Component {
             },
             buttons: [{
                type :'web_url',
-               url : event.link,
+               //  https://beta2.meetup.com/:urlname/events/:eventId/rsvp?response={no, yes}
+               url : `${event.link.replace('www.', 'beta2.')}rsvp?response=yes`,
                title : 'I want to go!'
             }]
           }]
