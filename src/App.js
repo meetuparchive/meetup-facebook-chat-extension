@@ -5,6 +5,8 @@ import queryString from 'query-string';
 import Login from './Login';
 import Search from './Search';
 import EventList from './EventList';
+import UpcomingEvents from './UpcomingEvents';
+import Categories from './Categories';
 
 const getToken = () => {
   // #access_token=TOKEN&token_type=bearer&expires_in=72576000&scope=rsvp+ageless
@@ -39,10 +41,18 @@ class App extends Component {
             }
           </div>
         </section>
-        { this.state.events &&
+        { this.state.events ?
           <section className='stripe--collection'>
             <div className='bounds'>
               <EventList events={this.state.events} />
+            </div>
+          </section> :
+          <section className='stripe'>
+            <div className='bounds'>
+              <UpcomingEvents token={token} />
+            </div>
+            <div className='bounds'>
+              <Categories token={token} />
             </div>
           </section>
         }
