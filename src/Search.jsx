@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import queryString from 'query-string';
 import fetchJsonp from 'fetch-jsonp';
 
+import search from './img/search.svg';
 import { button as buttonStyle } from './style.js'
 
 export default class Search extends Component {
@@ -81,11 +82,9 @@ export default class Search extends Component {
               onChange={this.handleInputChange} />
           </div>
           <div className='row-item row-item--shrink'>
-            <input
-              style={buttonStyle}
-              type='submit'
-              className='button button--primary'
-              value='search' />
+            <button style={buttonStyle} type='submit' className='button button--primary'>
+              <img src={search} width={20} alt='search' />
+            </button>
           </div>
         </div>
       </form>
