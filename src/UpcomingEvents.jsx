@@ -124,7 +124,6 @@ export default class UpcomingEvents extends Component {
   }
 
   handleFetchEventsSuccess(data) {
-    console.log('EVENTS', data.events);
     this.setState({ events: data.events });
   }
 
