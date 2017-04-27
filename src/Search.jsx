@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import queryString from 'query-string';
 import fetchJsonp from 'fetch-jsonp';
 
+import search from './img/search.svg';
+
 export default class Search extends Component {
 
   static defaultProps = {
@@ -46,13 +48,19 @@ export default class Search extends Component {
         'group',
         'link',
         'time',
-        'yes_rsvp_count'
+        'yes_rsvp_count',
+        'venue',
+        'rsvp_sample'
       ].join(','),
       access_token: token,
       text: meetup,
       lat: coords.latitude,
       lon: coords.longitude,
-      fields: 'group_key_photo'
+      fields: [
+        'group_key_photo',
+        'group_photo_gradient',
+        'rsvp_sample'
+      ].join(',')
     });
 
     return fetchJsonp(`${ENDPOINT}?${params}`, {
@@ -76,7 +84,9 @@ export default class Search extends Component {
               onChange={this.handleInputChange} />
           </div>
           <div className='row-item row-item--shrink'>
-            <input type='submit' className='button button--primary' value='search' />
+            <button type='submit' className='button button--primary button-override'>
+              <img src={search} width={20} alt='search' />
+            </button>
           </div>
         </div>
       </form>
