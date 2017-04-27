@@ -6,7 +6,7 @@ import Login from './Login';
 import Search from './Search';
 import EventList from './EventList';
 import UpcomingEvents from './UpcomingEvents';
-import Categories from './Categories';
+// import Categories from './Categories';
 
 const getToken = () => {
   // #access_token=TOKEN&token_type=bearer&expires_in=72576000&scope=rsvp+ageless
@@ -30,7 +30,7 @@ class App extends Component {
     const token = getToken();
 
     return (
-      <div>
+      <div style={{ height: '100vh' }}>
         <section className='stripe'>
           <div className='bounds' style={{paddingTop: '12px'}}>
             { token ?
@@ -50,9 +50,6 @@ class App extends Component {
           <section className='stripe'>
             <div className='bounds'>
               <UpcomingEvents token={token} />
-            </div>
-            <div className='bounds'>
-              <Categories token={token} />
             </div>
           </section>
         }
