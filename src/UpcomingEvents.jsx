@@ -188,16 +188,17 @@ export default class UpcomingEvents extends Component {
   render() {
     const { events } = this.state;
 
+    if (event.length === 0) { return false; }
+
+
     return (
       <div>
         <h1>Upcoming Meetups</h1>
-        {events.length > 0 &&
-          <Hscroll unclipAt='medium'>
-            {events.map((event,key) => (
-              <EventCard key={key} event={event} onShare={() => this.onShareEvent(event)}/>
-            ))}
-          </Hscroll>
-        }
+        <Hscroll unclipAt='medium'>
+          {events.map((event,key) => (
+            <EventCard key={key} event={event} onShare={() => this.onShareEvent(event)}/>
+          ))}
+        </Hscroll>
       </div>
     );
   }
