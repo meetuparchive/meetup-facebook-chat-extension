@@ -6,6 +6,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
 const path = require('path');
+const crypto = require('crypto');
+
 var messengerButton = "<html><head><title>Facebook Messenger Bot</title></head><body><h1>Facebook Messenger Bot</h1>This is a bot based on Messenger Platform QuickStart. For more details, see their <a href=\"https://developers.facebook.com/docs/messenger-platform/guides/quick-start\">docs</a>.<script src=\"https://button.glitch.me/button.js\" data-style=\"glitch\"></script><div class=\"glitchButton\" style=\"position:fixed;top:20px;right:20px;\"></div></body></html>";
 
 // The rest of the code implements the routes for our Express server.
@@ -61,8 +63,9 @@ app.post('/webhook', function (req, res) {
     // You must send back a 200, within 20 seconds, to let us know
     // you've successfully received the callback. Otherwise, the request
     // will time out and we will keep trying to resend.
-    res.sendStatus(200);
+    return res.sendStatus(200);
   }
+  return res.status(404).json({ message: 'Invalid body' });
 });
 
 // Incoming events handling
@@ -85,6 +88,10 @@ function receivedMessage(event) {
     // If we receive a text message, check to see if it matches a keyword
     // and send back the template example. Otherwise, just echo the text we received.
     switch (messageText) {
+      case 'Test':
+      case 'test':
+        callFindAPI(senderID);
+        break;
       case 'generic':
         sendGenericMessage(senderID);
         break;
@@ -176,7 +183,6 @@ function sendUpcomingEvents(recipientId) {
     }
   };
 
-  callSendAPI();
   callSendAPI(messageData);
 }
 
@@ -227,18 +233,71 @@ function sendGenericMessage(recipientId) {
   callSendAPI(messageData);
 }
 
-function callFindAPI() {
+function buildGenericMessage(recipientId, elements) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "generic",
+          elements: elements,
+        }
+      }
+    }
+  };
+
+  callSendAPI(messageData);
+}
+
+function generateDuotone(keyPhoto, photoGradient) {
+  if (!keyPhoto) {
+    return process.env.HOST_URL + '/fallback_blue.png';
+   }
+
+  var duotone = 'dt' + photoGradient.dark_color + 'x' + photoGradient.light_color;
+  var spec = 'event/rx500x600/' + duotone + '/';
+  var base = 'https://a248.e.akamai.net/secure.meetupstatic.com/photo_api/';
+  var duotoneUrl = base + spec + keyPhoto.id + '.jpeg';
+
+  return duotoneUrl;
+}
+
+function callFindAPI(recipientId) {
   request({
     uri: 'https://api.dev.meetup.com/find/upcoming_events',
-    qs: { key: process.env.MEETUP_API_TOKEN },
+    qs: {
+      key: process.env.MEETUP_API_TOKEN,
+      fields: 'group_photo_gradient,group_key_photo',
+      page: '6',
+      ordering: 'time',
+    },
     method: 'GET',
+    json: true,
   }, function (error, response, body) {
-    if (!error) {
+    if (error) {
       console.error("Unable to send message.");
       console.error(response);
       console.error(error);
     } else {
-      console.log("UPCOMING EVENTS ", response);
+      var upcomingEvents = body.events.map(event => ({
+        title: event.name,
+        subtitle: event.group.name,
+        item_url: event.link,
+        image_url: generateDuotone(event.group.key_photo, event.group.photo_gradient),
+        buttons: [{
+          type: 'web_url',
+          title: 'RSVP',
+          url: event.link,
+        }, {
+          type: 'postback',
+          title: 'Suggest',
+          payload: 'Payload Callback',
+        }]
+      }));
+      buildGenericMessage(recipientId, upcomingEvents);
     }
   });
 }
