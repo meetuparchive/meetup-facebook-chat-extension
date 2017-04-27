@@ -5,7 +5,9 @@ import shareIcon from './img/ic_send_lg_blue@2x.png';
 function generateDuotone(keyPhoto, photoGradient) {
   if (!keyPhoto) {
     return `${window.location.protocol}//${window.location.hostname}/fallback_blue.png`;
-   }
+  } else if(!photoGradient) {
+    return keyPhoto.photo_link;
+  }
 
   var duotone = 'dt' + photoGradient.dark_color + 'x' + photoGradient.light_color;
   var spec = 'event/rx500x600/' + duotone + '/';
@@ -31,7 +33,7 @@ export default class Share extends Component {
           template_type: 'generic',
           elements: [{
             title: event.name,
-            image_url: generateDuotone(event.group.key_photo, event.group.photoGradient),
+            image_url: generateDuotone(event.group.key_photo, event.group.photo_gradient),
             subtitle: moment(event.time).format('LLLL'),
             default_action: {
               type: 'web_url',
