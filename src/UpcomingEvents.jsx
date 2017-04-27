@@ -132,7 +132,7 @@ export default class UpcomingEvents extends Component {
     this.fetchUpcomingEvents({})
       .then(response => response.json())
       .then(({ data }) =>
-        this.handleFetchEventsSuccess(EVENT_DATA)
+        this.handleFetchEventsSuccess(data || EVENT_DATA)
       );
   }
 
