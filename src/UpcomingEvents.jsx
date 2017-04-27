@@ -190,44 +190,41 @@ export default class UpcomingEvents extends Component {
     'current_thread');
   }
 
-  handleFetchEventsSuccess(data) {
-    this.setState({ events: data.events });
+  handleFetchEventsSuccess(events) {
+    this.setState({ events: events });
   }
 
   componentWillMount() {
-    // this.handleFetchEventsSuccess(EVENT_DATA);
-    // Uncomment for live data
-    this.fetchUpcomingEvents()
-      .then(response => response.json())
-      .then(({ data }) =>
-        this.handleFetchEventsSuccess(data)
-      );
+    this.handleFetchEventsSuccess(EVENT_DATA.events.slice(0, 10));
 
-      navigator.geolocation.getCurrentPosition(function(position) {
-        console.log(position.coords);
-        // do_something(position.coords.latitude, position.coords.longitude);
-      });
+    // Uncomment for live data
+    // this.fetchUpcomingEvents()
+    //   .then(response => response.json())
+    //   .then(({ data }) =>
+    //     this.handleFetchEventsSuccess(data.events)
+    //   );
   }
 
   handleFilterClick(categoryId) {
     this.setState({ selectedFilter: categoryId });
-    this.fetchUpcomingEvents({}, categoryId)
-      .then(response => response.json())
-      .then(({ data }) =>
-        this.handleFetchEventsSuccess(data)
-      );
+    // this.handleFetchEventsSuccess(EVENT_DATA.events.filter(event => event.))
+    // this.fetchUpcomingEvents({}, categoryId)
+    //   .then(response => response.json())
+    //   .then(({ data }) =>
+    //     this.handleFetchEventsSuccess(data.events)
+    //   );
   }
 
   handleLocationClick(e) {
     // console.log(this.state.filterLocation);
     this.setState({ filterLocation: !this.state.filterLocation });
-    navigator.geolocation.getCurrentPosition(position => {
-      this.fetchUpcomingEvents(position.coords, this.state.selectedFilter)
-        .then(response => response.json())
-        .then(({ data }) =>
-          this.handleFetchEventsSuccess(data)
-        );
-    });
+    // navigator.geolocation.getCurrentPosition(position => {
+    //   this.fetchUpcomingEvents(position.coords, this.state.selectedFilter)
+    //     .then(response => response.json())
+    //     .then(({ data }) =>
+    //       this.handleFetchEventsSuccess(data.events)
+    //     );
+    // });
   }
 
   render() {
