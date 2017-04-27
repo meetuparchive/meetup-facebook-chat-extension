@@ -3,6 +3,10 @@ import moment from 'moment';
 
 export default class Share extends Component {
 
+  static defaultProps = {
+    event: {}
+  };
+
   handleClick = () => {
     const { event } = this.props;
     const messageToShare = {
@@ -12,7 +16,7 @@ export default class Share extends Component {
           template_type: 'generic',
           elements: [{
             title: event.name,
-            image_url: 'https://bot.peters-hats.com/img/hats/fez.jpg',
+            image_url: ((event.group || {}).key_photo || {}).photo_link,
             subtitle: moment(event.time).format('LLLL'),
             default_action: {
               type: 'web_url',
