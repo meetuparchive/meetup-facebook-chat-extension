@@ -18,3 +18,16 @@
 .secondary {
   color: #707070;
 }
+
+.avatar-overlap {
+  margin-left: -16px;
+}
+
+.avatar-overlap .avatar {
+  border: 1px solid white;
+  background-color: #bbb;
+}
+
+.avatar-overlap:first-of-type {
+  margin-left: 0;
+}
