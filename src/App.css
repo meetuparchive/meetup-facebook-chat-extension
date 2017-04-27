@@ -31,3 +31,12 @@
 .avatar-overlap:first-of-type {
   margin-left: 0;
 }
+
+.smaller {
+  font-size: 0.85rem;
+}
+
+.card {
+  border-color: white;
+  box-shadow: 1px 1px 15px 5px #e8e6e6;
+}

@@ -32,7 +32,7 @@ class App extends Component {
     return (
       <div>
         <section className='stripe'>
-          <div className='bounds'>
+          <div className='bounds' style={{paddingTop: '12px'}}>
             { token ?
               <Search
                 token={token}
@@ -42,7 +42,7 @@ class App extends Component {
           </div>
         </section>
         { this.state.events ?
-          <section className='stripe--collection'>
+          <section className='stripe'>
             <div className='bounds'>
               <EventList events={this.state.events} />
             </div>

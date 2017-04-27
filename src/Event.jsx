@@ -11,8 +11,8 @@ const Event = ({ event }) => (
     <div className="card" style={{ minHeight: '0' }}>
       <a href={event.link}>
         <h3 className='half-chunk headline'>{event.name}</h3>
-        <p className='secondary half-chunk'>{event.group.name}</p>
-        <div className='chunk'>
+        <p className='secondary half-chunk smaller'>{event.group.name}</p>
+        <div className='chunk smaller'>
           <p className='secondary'>{ moment(event.time).format(DATE_FORMAT) }</p>
           { event.venue && event.venue.name &&
             <p className='secondary'>{event.venue.name}</p>
