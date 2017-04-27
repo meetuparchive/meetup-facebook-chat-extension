@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
+import queryString from 'query-string';
+import fetchJsonp from 'fetch-jsonp';
 
 export default class Search extends Component {
 
   static defaultProps = {
-    meetup: ''
+    meetup: '',
+    coords: {
+      latitude: 40.7259114,
+      longitude: -73.99591649999999
+    },
+    handleSearchSuccess: function() {}
   };
 
   state = {
@@ -12,19 +19,65 @@ export default class Search extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    this.fetchEvents()
+      .then(response => response.json())
+      .then(({ data }) =>
+        this.props.handleSearchSuccess(data)
+      );
   }
 
   handleInputChange = (e) => {
     this.setState({ meetup: e.target.value });
   }
 
+  fetchEvents() {
+    const ENDPOINT = 'https://api.meetup.com/find/events/';
+    const {
+      token,
+      coords
+    } = this.props;
+    const {
+      meetup
+    } = this.state;
+
+    const params = queryString.stringify({
+      only: [
+        'name',
+        'group',
+        'link',
+        'time',
+        'yes_rsvp_count'
+      ].join(','),
+      access_token: token,
+      text: meetup,
+      lat: coords.latitude,
+      lon: coords.longitude,
+    });
+
+    return fetchJsonp(`${ENDPOINT}?${params}`, {
+      method: 'GET',
+      credentials: 'include'
+    });
+  }
+
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <div className="form-group">
-          <input type="text" onChange={this.handleInputChange} className="form-control" id="meetup" name='meetup' value={this.state.meetup} placeholder="Search for Meetups" />
+        <div className="row">
+          <div className='row-item'>
+            <input
+              id="meetup"
+              name='meetup'
+              placeholder="Search for Meetups"
+              className="form-control"
+              type="text"
+              value={this.state.meetup}
+              onChange={this.handleInputChange} />
+          </div>
+          <div className='row-item row-item--shrink'>
+            <input type='submit' className='button button--primary' value='search' />
+          </div>
         </div>
-        <button type="submit" className="btn btn-default">Submit</button>
       </form>
     );
   }
