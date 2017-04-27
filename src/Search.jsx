@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import queryString from 'query-string';
 import fetchJsonp from 'fetch-jsonp';
 
+import { button as buttonStyle } from './style.js'
+
 export default class Search extends Component {
 
   static defaultProps = {
@@ -79,7 +81,11 @@ export default class Search extends Component {
               onChange={this.handleInputChange} />
           </div>
           <div className='row-item row-item--shrink'>
-            <input type='submit' className='button button--primary' value='search' />
+            <input
+              style={buttonStyle}
+              type='submit'
+              className='button button--primary'
+              value='search' />
           </div>
         </div>
       </form>
