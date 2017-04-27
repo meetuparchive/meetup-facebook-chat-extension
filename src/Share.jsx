@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import shareIcon from './img/ic_send_lg_blue@2x.png';
 
 export default class Share extends Component {
 
@@ -48,6 +49,8 @@ export default class Share extends Component {
   }
 
   render() {
-    return <button className='button' onClick={this.handleClick}>Share</button>;
+    return (
+      <img onClick={this.handleClick} width={20} height={20} src={shareIcon} alt='share' />
+    );
   }
 }
