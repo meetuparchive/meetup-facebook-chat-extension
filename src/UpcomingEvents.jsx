@@ -178,17 +178,19 @@ export default class UpcomingEvents extends Component {
   }
 
   componentWillMount() {
-    this.fetchUpcomingEvents({})
-      .then(response => response.json())
-      .then(({ data }) =>
-        this.handleFetchEventsSuccess(data || EVENT_DATA)
-      );
+    this.handleFetchEventsSuccess(EVENT_DATA);
+    // Uncomment for live data
+    // this.fetchUpcomingEvents({})
+    //   .then(response => response.json())
+    //   .then(({ data }) =>
+    //     this.handleFetchEventsSuccess(data)
+    //   );
   }
 
   render() {
     const { events } = this.state;
 
-    if (event.length === 0) { return false; }
+    if (events.length === 0) { return false; }
 
 
     return (
