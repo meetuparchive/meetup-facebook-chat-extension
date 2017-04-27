@@ -47,11 +47,7 @@ class App extends Component {
               <EventList events={this.state.events} />
             </div>
           </section> :
-          <section className='stripe'>
-            <div className='bounds'>
-              <UpcomingEvents token={token} />
-            </div>
-          </section>
+          <UpcomingEvents token={token} />
         }
       </div>
     );

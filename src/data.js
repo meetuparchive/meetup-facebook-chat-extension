@@ -201,3 +201,421 @@ export const EVENT_DATA = {
     }
   ]
 };
+
+export const CATEGORIES_DATA = [
+  {
+    "id": 552,
+    "shortname": "movements",
+    "name": "Movements",
+    "sort_name": "Movements",
+    "photo": {
+      "id": 450131941,
+      "highres_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/5/highres_450131941.jpeg",
+      "photo_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/5/600_450131941.jpeg",
+      "thumb_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/5/thumb_450131941.jpeg",
+      "type": "event",
+      "base_url": "https://a248.e.akamai.net/secure.meetupstatic.com"
+    },
+    "category_ids": [
+      4,
+      13
+    ]
+  },
+  {
+    "id": 242,
+    "shortname": "outdoors-adventure",
+    "name": "Outdoors & Adventure",
+    "sort_name": "Outdoors & Adventure",
+    "photo": {
+      "id": 450131943,
+      "highres_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/7/highres_450131943.jpeg",
+      "photo_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/7/600_450131943.jpeg",
+      "thumb_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/7/thumb_450131943.jpeg",
+      "type": "event",
+      "base_url": "https://a248.e.akamai.net/secure.meetupstatic.com"
+    },
+    "category_ids": [
+      3,
+      23
+    ]
+  },
+  {
+    "id": 292,
+    "shortname": "tech",
+    "name": "Tech",
+    "sort_name": "Tech",
+    "photo": {
+      "id": 450131949,
+      "highres_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/d/highres_450131949.jpeg",
+      "photo_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/d/600_450131949.jpeg",
+      "thumb_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/d/thumb_450131949.jpeg",
+      "type": "event",
+      "base_url": "https://a248.e.akamai.net/secure.meetupstatic.com"
+    },
+    "category_ids": [
+      34
+    ]
+  },
+  {
+    "id": 232,
+    "shortname": "parents-family",
+    "name": "Family",
+    "sort_name": "Family",
+    "photo": {
+      "id": 450131932,
+      "highres_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/9/c/highres_450131932.jpeg",
+      "photo_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/9/c/600_450131932.jpeg",
+      "thumb_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/9/c/thumb_450131932.jpeg",
+      "type": "event",
+      "base_url": "https://a248.e.akamai.net/secure.meetupstatic.com"
+    },
+    "category_ids": [
+      25
+    ]
+  },
+  {
+    "id": 302,
+    "shortname": "health-wellness",
+    "name": "Health & Wellness",
+    "sort_name": "Health & Wellness",
+    "photo": {
+      "id": 450131950,
+      "highres_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/e/highres_450131950.jpeg",
+      "photo_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/e/600_450131950.jpeg",
+      "thumb_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/e/thumb_450131950.jpeg",
+      "type": "event",
+      "base_url": "https://a248.e.akamai.net/secure.meetupstatic.com"
+    },
+    "category_ids": [
+      14,
+      33
+    ]
+  },
+  {
+    "id": 282,
+    "shortname": "sports-fitness",
+    "name": "Sports & Fitness",
+    "sort_name": "Sports & Fitness",
+    "photo": {
+      "id": 450131948,
+      "highres_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/c/highres_450131948.jpeg",
+      "photo_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/c/600_450131948.jpeg",
+      "thumb_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/c/thumb_450131948.jpeg",
+      "type": "event",
+      "base_url": "https://a248.e.akamai.net/secure.meetupstatic.com"
+    },
+    "category_ids": [
+      9,
+      32
+    ]
+  },
+  {
+    "id": 562,
+    "shortname": "education",
+    "name": "Learning",
+    "sort_name": "Learning",
+    "photo": {
+      "id": 450131931,
+      "highres_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/9/b/highres_450131931.jpeg",
+      "photo_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/9/b/600_450131931.jpeg",
+      "thumb_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/9/b/thumb_450131931.jpeg",
+      "type": "event",
+      "base_url": "https://a248.e.akamai.net/secure.meetupstatic.com"
+    },
+    "category_ids": [
+      6
+    ]
+  },
+  {
+    "id": 262,
+    "shortname": "photography",
+    "name": "Photography",
+    "sort_name": "Photography",
+    "photo": {
+      "id": 450131946,
+      "highres_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/a/highres_450131946.jpeg",
+      "photo_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/a/600_450131946.jpeg",
+      "thumb_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/a/thumb_450131946.jpeg",
+      "type": "event",
+      "base_url": "https://a248.e.akamai.net/secure.meetupstatic.com"
+    },
+    "category_ids": [
+      27
+    ]
+  },
+  {
+    "id": 162,
+    "shortname": "food",
+    "name": "Food & Drink",
+    "sort_name": "Food & Drink",
+    "photo": {
+      "id": 450131937,
+      "highres_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/1/highres_450131937.jpeg",
+      "photo_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/1/600_450131937.jpeg",
+      "thumb_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/1/thumb_450131937.jpeg",
+      "type": "event",
+      "base_url": "https://a248.e.akamai.net/secure.meetupstatic.com"
+    },
+    "category_ids": [
+      10
+    ]
+  },
+  {
+    "id": 582,
+    "shortname": "writing",
+    "name": "Writing",
+    "sort_name": "Writing",
+    "photo": {
+      "id": 450131951,
+      "highres_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/f/highres_450131951.jpeg",
+      "photo_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/f/600_450131951.jpeg",
+      "thumb_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/f/thumb_450131951.jpeg",
+      "type": "event",
+      "base_url": "https://a248.e.akamai.net/secure.meetupstatic.com"
+    },
+    "category_ids": [
+      36
+    ]
+  },
+  {
+    "id": 212,
+    "shortname": "language",
+    "name": "Language & Culture",
+    "sort_name": "Language & Culture",
+    "photo": {
+      "id": 450131939,
+      "highres_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/3/highres_450131939.jpeg",
+      "photo_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/3/600_450131939.jpeg",
+      "thumb_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/3/thumb_450131939.jpeg",
+      "type": "event",
+      "base_url": "https://a248.e.akamai.net/secure.meetupstatic.com"
+    },
+    "category_ids": [
+      16
+    ]
+  },
+  {
+    "id": 512,
+    "shortname": "music",
+    "name": "Music",
+    "sort_name": "Music",
+    "photo": {
+      "id": 450131942,
+      "highres_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/6/highres_450131942.jpeg",
+      "photo_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/6/600_450131942.jpeg",
+      "thumb_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/6/thumb_450131942.jpeg",
+      "type": "event",
+      "base_url": "https://a248.e.akamai.net/secure.meetupstatic.com"
+    },
+    "category_ids": [
+      21
+    ]
+  },
+  {
+    "id": 585,
+    "shortname": "lgbtq",
+    "name": "LGBTQ",
+    "sort_name": "LGBTQ",
+    "photo": {
+      "id": 450131940,
+      "highres_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/4/highres_450131940.jpeg",
+      "photo_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/4/600_450131940.jpeg",
+      "thumb_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/4/thumb_450131940.jpeg",
+      "type": "event",
+      "base_url": "https://a248.e.akamai.net/secure.meetupstatic.com"
+    },
+    "category_ids": [
+      12
+    ]
+  },
+  {
+    "id": 583,
+    "shortname": "film",
+    "name": "Film",
+    "sort_name": "Film",
+    "photo": {
+      "id": 450858495,
+      "highres_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/4/8/3/f/highres_450858495.jpeg",
+      "photo_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/4/8/3/f/600_450858495.jpeg",
+      "thumb_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/4/8/3/f/thumb_450858495.jpeg",
+      "type": "event",
+      "base_url": "https://a248.e.akamai.net/secure.meetupstatic.com"
+    },
+    "category_ids": [
+      20
+    ]
+  },
+  {
+    "id": 182,
+    "shortname": "games-sci-fi",
+    "name": "Sci-Fi & Games",
+    "sort_name": "Sci-Fi & Games",
+    "photo": {
+      "id": 450131938,
+      "highres_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/2/highres_450131938.jpeg",
+      "photo_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/2/600_450131938.jpeg",
+      "thumb_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/2/thumb_450131938.jpeg",
+      "type": "event",
+      "base_url": "https://a248.e.akamai.net/secure.meetupstatic.com"
+    },
+    "category_ids": [
+      11,
+      29
+    ]
+  },
+  {
+    "id": 132,
+    "shortname": "beliefs",
+    "name": "Beliefs",
+    "sort_name": "Beliefs",
+    "photo": {
+      "id": 450131925,
+      "highres_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/9/5/highres_450131925.jpeg",
+      "photo_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/9/5/600_450131925.jpeg",
+      "thumb_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/9/5/thumb_450131925.jpeg",
+      "type": "event",
+      "base_url": "https://a248.e.akamai.net/secure.meetupstatic.com"
+    },
+    "category_ids": [
+      22,
+      24,
+      28
+    ]
+  },
+  {
+    "id": 122,
+    "shortname": "arts-culture",
+    "name": "Arts",
+    "sort_name": "Arts",
+    "photo": {
+      "id": 450131912,
+      "highres_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/8/8/highres_450131912.jpeg",
+      "photo_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/8/8/600_450131912.jpeg",
+      "thumb_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/8/8/thumb_450131912.jpeg",
+      "type": "event",
+      "base_url": "https://a248.e.akamai.net/secure.meetupstatic.com"
+    },
+    "category_ids": [
+      1
+    ]
+  },
+  {
+    "id": 222,
+    "shortname": "book-clubs",
+    "name": "Book Clubs",
+    "sort_name": "Book Clubs",
+    "photo": {
+      "id": 450131926,
+      "highres_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/9/6/highres_450131926.jpeg",
+      "photo_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/9/6/600_450131926.jpeg",
+      "thumb_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/9/6/thumb_450131926.jpeg",
+      "type": "event",
+      "base_url": "https://a248.e.akamai.net/secure.meetupstatic.com"
+    },
+    "category_ids": [
+      18
+    ]
+  },
+  {
+    "id": 542,
+    "shortname": "dancing",
+    "name": "Dance",
+    "sort_name": "Dance",
+    "photo": {
+      "id": 450131930,
+      "highres_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/9/a/highres_450131930.jpeg",
+      "photo_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/9/a/600_450131930.jpeg",
+      "thumb_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/9/a/thumb_450131930.jpeg",
+      "type": "event",
+      "base_url": "https://a248.e.akamai.net/secure.meetupstatic.com"
+    },
+    "category_ids": [
+      5
+    ]
+  },
+  {
+    "id": 252,
+    "shortname": "pets",
+    "name": "Pets",
+    "sort_name": "Pets",
+    "photo": {
+      "id": 450131945,
+      "highres_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/9/highres_450131945.jpeg",
+      "photo_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/9/600_450131945.jpeg",
+      "thumb_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/9/thumb_450131945.jpeg",
+      "type": "event",
+      "base_url": "https://a248.e.akamai.net/secure.meetupstatic.com"
+    },
+    "category_ids": [
+      26
+    ]
+  },
+  {
+    "id": 532,
+    "shortname": "hobbies-crafts",
+    "name": "Hobbies & Crafts",
+    "sort_name": "Hobbies & Crafts",
+    "photo": {
+      "id": 450131929,
+      "highres_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/9/9/highres_450131929.jpeg",
+      "photo_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/9/9/600_450131929.jpeg",
+      "thumb_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/9/9/thumb_450131929.jpeg",
+      "type": "event",
+      "base_url": "https://a248.e.akamai.net/secure.meetupstatic.com"
+    },
+    "category_ids": [
+      15
+    ]
+  },
+  {
+    "id": 584,
+    "shortname": "fashion-beauty",
+    "name": "Fashion & Beauty",
+    "sort_name": "Fashion & Beauty",
+    "photo": {
+      "id": 450131934,
+      "highres_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/9/e/highres_450131934.jpeg",
+      "photo_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/9/e/600_450131934.jpeg",
+      "thumb_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/9/e/thumb_450131934.jpeg",
+      "type": "event",
+      "base_url": "https://a248.e.akamai.net/secure.meetupstatic.com"
+    },
+    "category_ids": [
+      8
+    ]
+  },
+  {
+    "id": 272,
+    "shortname": "social",
+    "name": "Social",
+    "sort_name": "Social",
+    "photo": {
+      "id": 450131947,
+      "highres_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/b/highres_450131947.jpeg",
+      "photo_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/b/600_450131947.jpeg",
+      "thumb_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/a/b/thumb_450131947.jpeg",
+      "type": "event",
+      "base_url": "https://a248.e.akamai.net/secure.meetupstatic.com"
+    },
+    "category_ids": [
+      31
+    ]
+  },
+  {
+    "id": 522,
+    "shortname": "career-business",
+    "name": "Career & Business",
+    "sort_name": "Career & Business",
+    "photo": {
+      "id": 450131927,
+      "highres_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/9/7/highres_450131927.jpeg",
+      "photo_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/9/7/600_450131927.jpeg",
+      "thumb_link": "https://a248.e.akamai.net/secure.meetupstatic.com/photos/event/2/e/9/7/thumb_450131927.jpeg",
+      "type": "event",
+      "base_url": "https://a248.e.akamai.net/secure.meetupstatic.com"
+    },
+    "category_ids": [
+      2
+    ]
+  }
+];

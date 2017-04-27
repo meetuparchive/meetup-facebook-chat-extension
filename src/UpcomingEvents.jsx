@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import fetchJsonp from 'fetch-jsonp';
 import queryString from 'query-string';
 import moment from 'moment';
-import { EVENT_DATA } from './data';
+import { EVENT_DATA, CATEGORIES_DATA } from './data';
 import Hscroll from 'meetup-web-components/lib/Hscroll';
+import shareIcon from './img/ic_send_lg_blue@2x.png';
 
 const styles = {
   card: {
@@ -14,7 +15,7 @@ const styles = {
     marginLeft: '2px',
     borderRadius: '3px',
     display: 'inline-block',
-    boxShadow: '0 2px 4px 0 rgba(0,0,0,.31)',
+    boxShadow: '1px 1px 15px 5px #e8e6e6',
   },
   header: {
     backgroundColor: '#321da2',
@@ -58,14 +59,25 @@ const styles = {
     fontWeight: '500',
   },
   share: {
-    fontSize: '12px',
-    color: '#321da2',
-    fontWeight: '600',
+    marginRight: '5px',
+    marginBottom: '5px',
   },
   date: {
     fontSize: '11px',
     fontWeight: '500',
   },
+  filter: {
+    color: '#0084FF',
+    fontSize: '16px',
+    lineHeight: '12px',
+    border: '1px solid #0084FF',
+    borderRadius: '999px',
+    padding: '7px 15px',
+    margin: '5px',
+    marginLeft: '0',
+    background: 'none',
+    display: 'inline',
+  }
 };
 
 const generateDuotone = (keyPhoto, photoGradient) => {
@@ -95,12 +107,13 @@ const EventCard = ({ event, onShare }) => {
         <p style={styles.subtitle}>{event.group.name}</p>
         <div style={styles.bottom}>
           <p style={styles.date}>{moment(event.time).format('ddd LT')}</p>
-          <a onClick={onShare} style={styles.share}>Share</a>
+          <img onClick={onShare} style={styles.share} width={15} height={15} src={shareIcon} alt='share' />
         </div>
       </div>
     </div>
   );
 }
+// <a onClick={onShare} style={styles.share}>Share</a>
 
 const getMessagePayload = (event) => {
   return ({
@@ -178,13 +191,13 @@ export default class UpcomingEvents extends Component {
   }
 
   componentWillMount() {
-    this.handleFetchEventsSuccess(EVENT_DATA);
+    // this.handleFetchEventsSuccess(EVENT_DATA);
     // Uncomment for live data
-    // this.fetchUpcomingEvents({})
-    //   .then(response => response.json())
-    //   .then(({ data }) =>
-    //     this.handleFetchEventsSuccess(data)
-    //   );
+    this.fetchUpcomingEvents({})
+      .then(response => response.json())
+      .then(({ data }) =>
+        this.handleFetchEventsSuccess(data)
+      );
   }
 
   render() {
@@ -195,12 +208,27 @@ export default class UpcomingEvents extends Component {
 
     return (
       <div>
-        <h1>Upcoming Meetups</h1>
-        <Hscroll unclipAt='medium'>
-          {events.map((event,key) => (
-            <EventCard key={key} event={event} onShare={() => this.onShareEvent(event)}/>
-          ))}
-        </Hscroll>
+        <section className='stripe'>
+          <div className='bounds'>
+            <h1>Upcoming Meetups</h1>
+            <Hscroll unclipAt='medium'>
+              {events.map((event,key) => (
+                <EventCard key={key} event={event} onShare={() => this.onShareEvent(event)}/>
+              ))}
+            </Hscroll>
+          </div>
+        </section>
+        <section>
+          <div className='bounds'>
+            <h1>Filters</h1>
+            <div>
+              <button style={styles.filter}>Near Me</button>
+              {CATEGORIES_DATA.map((category, key) =>
+                <button style={styles.filter} key={key}>{category.name}</button>
+              )}
+            </div>
+          </div>
+        </section>
       </div>
     );
   }
