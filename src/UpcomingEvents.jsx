@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import fetchJsonp from 'fetch-jsonp';
 import queryString from 'query-string';
 import moment from 'moment';
+import { EVENT_DATA } from './data';
 import Hscroll from 'meetup-web-components/lib/Hscroll';
 
 const styles = {
@@ -109,7 +110,7 @@ export default class UpcomingEvents extends Component {
   fetchUpcomingEvents = (coords) => {
     const ENDPOINT = 'https://api.dev.meetup.com/find/upcoming_events';
     const params = queryString.stringify({
-      key: '381f56b7f53187d4e792b436d431f7e',
+      key: process.env.REACT_APP_MEETUP_API_TOKEN,
       fields: 'group_photo_gradient,group_key_photo',
       page: '6',
       ordering: 'time',
@@ -131,7 +132,7 @@ export default class UpcomingEvents extends Component {
     this.fetchUpcomingEvents({})
       .then(response => response.json())
       .then(({ data }) =>
-        this.handleFetchEventsSuccess(data)
+        this.handleFetchEventsSuccess(EVENT_DATA)
       );
   }
 
@@ -141,7 +142,7 @@ export default class UpcomingEvents extends Component {
     return (
       <div>
         <h1>Upcoming Meetups</h1>
-        {events.length &&
+        {events.length > 0 &&
           <Hscroll unclipAt='medium'>
             {events.map((event,key) => (
               <EventCard key={key} event={event} />
